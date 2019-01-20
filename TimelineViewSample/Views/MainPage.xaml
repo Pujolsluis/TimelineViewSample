@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:TimelineViewSample" 
+             xmlns:viewmodels="clr-namespace:TimelineViewSample.ViewModels"
+             xmlns:controls="clr-namespace:TimelineViewSample.Controls"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             Title="TimelineView Sample"
+             x:Class="TimelineViewSample.MainPage"
+             Padding="16">
+    <ContentPage.BindingContext>
+        <viewmodels:MainPageViewModel/>
+    </ContentPage.BindingContext>
+    <StackLayout>
+       <controls:ExtendedListView  VerticalOptions="FillAndExpand"
+                                   ItemsSource="{Binding Data}"
+                                   HasUnevenRows="True"
+                                   LoadMoreCommand="{Binding OnLoadMoreCommand}"
+                                   SeparatorVisibility="None"
+                                   Footer="">
+            <controls:ExtendedListView.Header>
+                <StackLayout>
+                    <Image Source="ic_start"
+                           HorizontalOptions="Start"
+                           WidthRequest="24"
+                           Margin="26,0,0,0"/>
+                </StackLayout>
+            </controls:ExtendedListView.Header>
+                <controls:ExtendedListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="32,0,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="32"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <BoxView Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" 
+                                         VerticalOptions="FillAndExpand" HorizontalOptions="Start"
+                                         WidthRequest="1" BackgroundColor="Navy"/>
+                                <BoxView Grid.Row="0" Grid.Column="0"
+                                         HorizontalOptions="FillAndExpand" VerticalOptions="Center"
+                                         HeightRequest="1" Color="Navy"/>
+                                <Label Grid.Row="0" Grid.Column="1"
+                                       TextColor="Navy">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{Binding UserName}" FontAttributes="Bold"/>
+                                            <Span Text="{Binding Date, StringFormat='{0: MM.d.yy}'}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                                       Margin="16,4,16,16"
+                                       Text="{Binding Description}"/>
+                                <Image Source="ic_timeline_dot"
+                                       HeightRequest="12"
+                                       HorizontalOptions="Start"
+                                       Margin="-6,0,0,0"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </controls:ExtendedListView.ItemTemplate>
+            <controls:ExtendedListView.Footer>
+                <ActivityIndicator/>
+            </controls:ExtendedListView.Footer>
+        </controls:ExtendedListView>
+    </StackLayout>
+</ContentPage>
