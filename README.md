@@ -16,5 +16,5 @@ In this article we are going to see our next use case which is creating a Timeli
 Our use case to dive into on creating custom controls Part 3 will be the **TimelineView**
 
 <p align="center">
-<img src="https://github.com/Pujolsluis/TimelineViewSample/blob/master/Art/timelinecontrol.gif" height="584" width="600" title="TimelineView Sample - Pujolsluis"/>
+<img src="https://github.com/Pujolsluis/TimelineViewSample/blob/master/Art/timelinecontrol.gif" height="616" width="300" title="TimelineView Sample - Pujolsluis"/>
 </p>
